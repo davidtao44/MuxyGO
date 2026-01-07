@@ -1,0 +1,113 @@
+.servicesPage {
+    padding-bottom: var(--space-24);
+}
+
+/* Services Detail Section */
+.servicesSection {
+    padding: var(--space-16) 0;
+}
+
+.servicesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}
+
+.serviceDetail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .serviceDetail {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .serviceDetail:nth-child(even) .serviceImage {
+        order: 2;
+    }
+}
+
+.serviceImage {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1) 0%, rgba(var(--color-secondary-rgb), 0.1) 100%);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    border: 1px solid var(--color-surface-border);
+}
+
+.serviceContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.serviceIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.15) 0%, rgba(var(--color-secondary-rgb), 0.15) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-3xl);
+}
+
+.serviceTitle {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+}
+
+.serviceDescription {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+.featuresList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+}
+
+.featureCheck {
+    color: var(--color-primary-light);
+}
+
+/* CTA Section */
+.ctaSection {
+    padding: var(--space-16) 0;
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1) 0%, rgba(var(--color-secondary-rgb), 0.1) 100%);
+    text-align: center;
+}
+
+.ctaTitle {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.ctaDescription {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+    }
+}
+
+/* Size variants */
+.small {
+    max-width: var(--container-md);
+}
+
+.medium {
+    max-width: var(--container-lg);
+}
+
+.large {
+    max-width: var(--container-xl);
+}
+
+.full {
+    max-width: 100%;
+}
