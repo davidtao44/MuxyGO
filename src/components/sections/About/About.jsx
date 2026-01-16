@@ -1,4 +1,12 @@
 import { useScrollAnimation } from '../../../hooks';
+import { 
+    Target, 
+    Users, 
+    Lightbulb, 
+    Zap,
+    Award,
+    TrendingUp
+} from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';
@@ -6,69 +14,47 @@ import styles from './About.module.css';
 
 const VALUES = [
     {
-        icon: '🎯',
+        icon: <Target size={24} />,
         title: 'Excelencia',
         description: 'Buscamos la perfección en cada proyecto.',
     },
     {
-        icon: '🤝',
+        icon: <Users size={24} />,
         title: 'Compromiso',
         description: 'Tu éxito es nuestra prioridad.',
     },
     {
-        icon: '💡',
+        icon: <Lightbulb size={24} />,
         title: 'Innovación',
         description: 'Adoptamos las últimas tecnologías.',
     },
     {
-        icon: '🔄',
+        icon: <Zap size={24} />,
         title: 'Agilidad',
         description: 'Entregas rápidas y eficientes.',
     },
 ];
 
+const STATS = [
+    { value: '15+', label: 'Años de Experiencia', icon: <Award size={20} /> },
+    { value: '500+', label: 'Proyectos Completados', icon: <Target size={20} /> },
+    { value: '200+', label: 'Clientes Satisfechos', icon: <Users size={20} /> },
+    { value: '98%', label: 'Tasa de Éxito', icon: <TrendingUp size={20} /> },
+];
+
 function About() {
     const [textRef, textVisible] = useScrollAnimation({ threshold: 0.2 });
-    const [imageRef, imageVisible] = useScrollAnimation({ threshold: 0.2 });
+    const [statsRef, statsVisible] = useScrollAnimation({ threshold: 0.2 });
 
     return (
         <section className={styles.about} id="nosotros">
-            <div className={styles.backgroundAccent}></div>
-
             <Container>
                 <div className={styles.content}>
-                    {/* Image side */}
-                    <div
-                        ref={imageRef}
-                        className={`${styles.imageWrapper} ${styles.animated} ${imageVisible ? styles.visible : ''}`}
-                    >
-                        <div className={styles.imagePlaceholder}>
-                            👨‍💻
-                        </div>
-                        <div className={styles.imageOverlay}>
-                            <div className={styles.overlayStats}>
-                                <div className={styles.overlayStat}>
-                                    <div className={styles.overlayValue}>98%</div>
-                                    <div className={styles.overlayLabel}>Satisfacción</div>
-                                </div>
-                                <div className={styles.overlayStat}>
-                                    <div className={styles.overlayValue}>24/7</div>
-                                    <div className={styles.overlayLabel}>Soporte</div>
-                                </div>
-                                <div className={styles.overlayStat}>
-                                    <div className={styles.overlayValue}>100%</div>
-                                    <div className={styles.overlayLabel}>Entrega</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     {/* Text side */}
                     <div
                         ref={textRef}
-                        className={`${styles.textContent} ${styles.animated} ${textVisible ? styles.visible : ''}`}
+                        className={`${styles.textContent} ${textVisible ? styles.visible : ''}`}
                     >
-                        <p className={styles.subtitle}>Sobre Nosotros</p>
                         <h2 className={styles.title}>
                             Impulsamos la Transformación Digital de tu Negocio
                         </h2>
@@ -94,6 +80,22 @@ function About() {
                         <Link to="/nosotros">
                             <Button variant="primary">Conoce al Equipo</Button>
                         </Link>
+                    </div>
+
+                    {/* Stats side */}
+                    <div
+                        ref={statsRef}
+                        className={`${styles.statsContent} ${statsVisible ? styles.visible : ''}`}
+                    >
+                        <div className={styles.statsGrid}>
+                            {STATS.map(({ value, label, icon }) => (
+                                <div key={label} className={styles.stat}>
+                                    <div className={styles.statIcon}>{icon}</div>
+                                    <div className={styles.statValue}>{value}</div>
+                                    <div className={styles.statLabel}>{label}</div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </Container>

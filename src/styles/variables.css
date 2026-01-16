@@ -6,39 +6,60 @@
 :root {
     /* ==================== COLORS ==================== */
 
-    /* Primary Palette */
-    --color-primary: #6366F1;
-    --color-primary-light: #818CF8;
-    --color-primary-dark: #4F46E5;
-    --color-primary-rgb: 99, 102, 241;
+    /* Primary Palette - Corporate Minimalist */
+    --color-primary: #1E3A8A;
+    --color-primary-light: #3B82F6;
+    --color-primary-dark: #1E40AF;
+    --color-primary-rgb: 30, 58, 138;
 
-    /* Secondary Palette */
-    --color-secondary: #22D3EE;
-    --color-secondary-light: #67E8F9;
-    --color-secondary-dark: #06B6D4;
-    --color-secondary-rgb: 34, 211, 238;
+    /* Secondary Palette - Professional Gray */
+    --color-secondary: #6B7280;
+    --color-secondary-light: #9CA3AF;
+    --color-secondary-dark: #4B5563;
+    --color-secondary-rgb: 107, 114, 128;
 
-    /* Accent */
-    --color-accent: #F472B6;
-    --color-accent-light: #F9A8D4;
-    --color-accent-dark: #EC4899;
+    /* Accent - Corporate Blue */
+    --color-accent: #2563EB;
+    --color-accent-light: #3B82F6;
+    --color-accent-dark: #1D4ED8;
 
-    /* Background (Dark Theme) */
-    --color-bg-primary: #0F172A;
-    --color-bg-secondary: #1E293B;
-    --color-bg-tertiary: #334155;
-    --color-bg-elevated: rgba(30, 41, 59, 0.8);
+    /* Neutral Colors */
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-300: #D1D5DB;
+    --color-gray-400: #9CA3AF;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-900: #111827;
 
-    /* Surface */
-    --color-surface: rgba(30, 41, 59, 0.6);
-    --color-surface-hover: rgba(51, 65, 85, 0.6);
-    --color-surface-border: rgba(148, 163, 184, 0.1);
+    /* Background - Clean Professional */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F9FAFB;
+    --color-bg-tertiary: #F3F4F6;
+    --color-bg-elevated: #FFFFFF;
 
-    /* Text */
-    --color-text-primary: #F8FAFC;
-    --color-text-secondary: #94A3B8;
-    --color-text-tertiary: #64748B;
-    --color-text-inverse: #0F172A;
+    /* Surface - Clean & Professional */
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F9FAFB;
+    --color-surface-border: #E5E7EB;
+
+    /* Gradient Backgrounds - Subtle Professional */
+    --gradient-bg-1: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%),
+                      radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(30, 58, 138, 0.03) 0%, transparent 50%);
+
+    /* Text - Professional Readability */
+    --color-text-primary: #111827;
+    --color-text-secondary: #6B7280;
+    --color-text-tertiary: #9CA3AF;
+    --color-text-inverse: #FFFFFF;
+
+    /* Text Gradients - Subtle */
+    --gradient-text-primary: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+    --gradient-text-secondary: linear-gradient(135deg, #374151 0%, #6B7280 100%);
 
     /* Semantic */
     --color-success: #22C55E;
@@ -143,13 +164,17 @@
 
     /* ==================== SHADOWS ==================== */
 
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 40px rgba(var(--color-primary-rgb), 0.3);
-    --shadow-glow-secondary: 0 0 40px rgba(var(--color-secondary-rgb), 0.3);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+
+    /* Professional Shadows */
+    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
     /* ==================== TRANSITIONS ==================== */
 
@@ -177,19 +202,55 @@
 /* ==================== GRADIENT BACKGROUNDS ==================== */
 
 .gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
 }
 
 .gradient-hero {
-    background:
-        radial-gradient(ellipse at 20% 0%, rgba(var(--color-primary-rgb), 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 100%, rgba(var(--color-secondary-rgb), 0.1) 0%, transparent 50%),
-        var(--color-bg-primary);
+    background: var(--gradient-bg-1);
+}
+
+.gradient-subtle {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+}
+
+.gradient-card {
+    background: linear-gradient(135deg, 
+        var(--color-surface) 0%, 
+        var(--color-surface-hover) 50%, 
+        var(--color-surface) 100%);
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-text-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.gradient-text-accent {
+    background: var(--gradient-text-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Professional Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-subtle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(0.98); }
 }

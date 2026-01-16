@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Building2 } from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
 import styles from './Header.module.css';
@@ -17,7 +19,7 @@ function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 10);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -33,13 +35,18 @@ function Header() {
     };
 
     return (
-        <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
+        <motion.header 
+            className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
             <Container>
                 <div className={styles.headerInner}>
                     {/* Logo */}
                     <Link to="/" className={styles.logo} aria-label="MuxyGo - Inicio">
-                        <div className={styles.logoIcon}>M</div>
-                        <span>MuxyGo</span>
+                        <Building2 size={32} className={styles.logoIcon} />
+                        <span className={styles.logoText}>MuxyGo</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -61,7 +68,7 @@ function Header() {
                     <div className={styles.actions}>
                         <Link to="/contacto">
                             <Button variant="primary" size="small">
-                                Contáctanos
+                                Contactar
                             </Button>
                         </Link>
 
@@ -72,33 +79,70 @@ function Header() {
                             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
                             aria-expanded={isMobileMenuOpen}
                         >
-                            <span className={styles.menuLine}></span>
-                            <span className={styles.menuLine}></span>
-                            <span className={styles.menuLine}></span>
+                            <AnimatePresence mode="wait">
+                                {isMobileMenuOpen ? (
+                                    <motion.div
+                                        key="close"
+                                        initial={{ rotate: -90, opacity: 0 }}
+                                        animate={{ rotate: 0, opacity: 1 }}
+                                        exit={{ rotate: 90, opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <X size={24} />
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key="menu"
+                                        initial={{ rotate: 90, opacity: 0 }}
+                                        animate={{ rotate: 0, opacity: 1 }}
+                                        exit={{ rotate: -90, opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Menu size={24} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </button>
                     </div>
                 </div>
             </Container>
 
             {/* Mobile Navigation */}
-            <nav
-                className={`${styles.mobileNav} ${isMobileMenuOpen ? styles.mobileNavOpen : ''}`}
-                aria-label="Navegación móvil"
-            >
-                {NAV_LINKS.map(({ path, label }) => (
-                    <NavLink
-                        key={path}
-                        to={path}
-                        className={({ isActive }) =>
-                            `${styles.mobileNavLink} ${isActive ? styles.mobileNavLinkActive : ''}`
-                        }
-                        onClick={closeMobileMenu}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.nav
+                        className={styles.mobileNav}
+                        aria-label="Navegación móvil"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
                     >
-                        {label}
-                    </NavLink>
-                ))}
-            </nav>
-        </header>
+                        <div className={styles.mobileNavContent}>
+                            {NAV_LINKS.map(({ path, label }) => (
+                                <NavLink
+                                    key={path}
+                                    to={path}
+                                    className={({ isActive }) =>
+                                        `${styles.mobileNavLink} ${isActive ? styles.mobileNavLinkActive : ''}`
+                                    }
+                                    onClick={closeMobileMenu}
+                                >
+                                    {label}
+                                </NavLink>
+                            ))}
+                            <div className={styles.mobileActions}>
+                                <Link to="/contacto" onClick={closeMobileMenu}>
+                                    <Button variant="primary" size="medium" fullWidth>
+                                        Contactar
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
+        </motion.header>
     );
 }
 

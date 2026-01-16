@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '../../../hooks';
 import { submitContactForm } from '../../../services/api';
+import { 
+    Mail, 
+    User, 
+    Building, 
+    MessageSquare,
+    Send,
+    CheckCircle
+} from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
 import styles from './ContactForm.module.css';
@@ -12,6 +20,15 @@ const INITIAL_FORM_STATE = {
     service: '',
     message: '',
 };
+
+const SERVICES = [
+    { value: 'web', label: 'Desarrollo Web' },
+    { value: 'mobile', label: 'Apps Móviles' },
+    { value: 'cloud', label: 'Cloud Solutions' },
+    { value: 'security', label: 'Ciberseguridad' },
+    { value: 'ai', label: 'IA & Machine Learning' },
+    { value: 'bi', label: 'Business Intelligence' },
+];
 
 function ContactForm() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE);
@@ -39,37 +56,43 @@ function ContactForm() {
         }
     };
 
+    const resetForm = () => {
+        setIsSuccess(false);
+        setFormData(INITIAL_FORM_STATE);
+    };
+
     return (
         <section className={styles.contactForm} id="contacto">
-            <div className={styles.backgroundGlow}></div>
-
             <Container size="medium">
                 <header className={styles.header}>
-                    <p className={styles.subtitle}>Contacto</p>
-                    <h2 className={styles.title}>¿Listo para Empezar?</h2>
+                    <h2 className={styles.title}>¿Listo para Empezar tu Proyecto?</h2>
                     <p className={styles.description}>
-                        Cuéntanos sobre tu proyecto y te contactaremos para discutir cómo podemos ayudarte.
+                        Cuéntanos sobre tus necesidades y te contactaremos para discutir cómo podemos ayudarte a alcanzar tus objetivos.
                     </p>
                 </header>
 
                 <div
                     ref={ref}
-                    className={`${styles.formWrapper} ${styles.animated} ${isVisible ? styles.visible : ''}`}
+                    className={`${styles.formWrapper} ${isVisible ? styles.visible : ''}`}
                 >
                     {isSuccess ? (
                         <div className={styles.successMessage}>
-                            <div className={styles.successIcon}>✅</div>
-                            <h3 className={styles.successTitle}>¡Mensaje Enviado!</h3>
+                            <CheckCircle size={48} className={styles.successIcon} />
+                            <h3 className={styles.successTitle}>¡Mensaje Enviado con Éxito!</h3>
                             <p className={styles.successText}>
-                                Gracias por contactarnos. Te responderemos pronto.
+                                Gracias por contactarnos. Nuestro equipo revisará tu mensaje y te responderá a la brevedad posible.
                             </p>
+                            <Button variant="outline" size="medium" onClick={resetForm}>
+                                Enviar Otro Mensaje
+                            </Button>
                         </div>
                     ) : (
                         <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.formRow}>
                                 <div className={styles.formGroup}>
                                     <label htmlFor="name" className={styles.label}>
-                                        Nombre <span className={styles.required}>*</span>
+                                        <User size={16} className={styles.labelIcon} />
+                                        Nombre Completo <span className={styles.required}>*</span>
                                     </label>
                                     <input
                                         type="text"
@@ -78,13 +101,14 @@ function ContactForm() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         className={styles.input}
-                                        placeholder="Tu nombre"
+                                        placeholder="Juan Pérez"
                                         required
                                     />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label htmlFor="email" className={styles.label}>
+                                        <Mail size={16} className={styles.labelIcon} />
                                         Email <span className={styles.required}>*</span>
                                     </label>
                                     <input
@@ -94,7 +118,7 @@ function ContactForm() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         className={styles.input}
-                                        placeholder="tu@email.com"
+                                        placeholder="juan@empresa.com"
                                         required
                                     />
                                 </div>
@@ -103,6 +127,7 @@ function ContactForm() {
                             <div className={styles.formRow}>
                                 <div className={styles.formGroup}>
                                     <label htmlFor="company" className={styles.label}>
+                                        <Building size={16} className={styles.labelIcon} />
                                         Empresa
                                     </label>
                                     <input
@@ -112,12 +137,13 @@ function ContactForm() {
                                         value={formData.company}
                                         onChange={handleChange}
                                         className={styles.input}
-                                        placeholder="Tu empresa"
+                                        placeholder="Mi Empresa S.A."
                                     />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label htmlFor="service" className={styles.label}>
+                                        <Send size={16} className={styles.labelIcon} />
                                         Servicio de Interés
                                     </label>
                                     <select
@@ -128,18 +154,18 @@ function ContactForm() {
                                         className={styles.select}
                                     >
                                         <option value="">Selecciona un servicio</option>
-                                        <option value="web">Desarrollo Web</option>
-                                        <option value="mobile">Apps Móviles</option>
-                                        <option value="cloud">Cloud Solutions</option>
-                                        <option value="security">Ciberseguridad</option>
-                                        <option value="ai">IA & Machine Learning</option>
-                                        <option value="bi">Business Intelligence</option>
+                                        {SERVICES.map(({ value, label }) => (
+                                            <option key={value} value={value}>
+                                                {label}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>
 
                             <div className={styles.formGroup}>
                                 <label htmlFor="message" className={styles.label}>
+                                    <MessageSquare size={16} className={styles.labelIcon} />
                                     Mensaje <span className={styles.required}>*</span>
                                 </label>
                                 <textarea
@@ -148,7 +174,8 @@ function ContactForm() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     className={styles.textarea}
-                                    placeholder="Cuéntanos sobre tu proyecto..."
+                                    placeholder="Describe los detalles de tu proyecto..."
+                                    rows={6}
                                     required
                                 ></textarea>
                             </div>
@@ -161,7 +188,7 @@ function ContactForm() {
                                 disabled={isSubmitting}
                                 className={styles.submitButton}
                             >
-                                {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                                {isSubmitting ? 'Enviando Mensaje...' : 'Enviar Mensaje'}
                             </Button>
                         </form>
                     )}

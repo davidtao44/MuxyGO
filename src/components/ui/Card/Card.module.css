@@ -6,6 +6,8 @@
     transition: all var(--duration-normal) var(--ease-default);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -14,9 +16,14 @@
     box-shadow: var(--shadow-xl), 0 0 30px rgba(var(--color-primary-rgb), 0.1);
 }
 
-/* Variants */
+/* Enhanced Variants */
 .elevated {
     box-shadow: var(--shadow-lg);
+    background: rgba(26, 26, 46, 0.6);
+}
+
+.elevated:hover {
+    box-shadow: var(--shadow-2xl), var(--shadow-glow);
 }
 
 .outlined {
@@ -24,16 +31,73 @@
     border: 2px solid var(--color-surface-border);
 }
 
+.outlined:hover {
+    border-color: var(--color-primary);
+    background: rgba(var(--color-primary-rgb), 0.05);
+}
+
 .glass {
-    background: rgba(30, 41, 59, 0.4);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .glass:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.1);
+}
+
+/* Neon Variant */
+.neon {
+    background: rgba(10, 10, 15, 0.6);
+    border: 2px solid var(--color-primary);
+    position: relative;
+    overflow: visible;
+}
+
+.neon::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+    border-radius: var(--radius-xl);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+    animation: gradient-rotate 3s linear infinite;
+    background-size: 200% 200%;
+}
+
+.neon:hover::before {
+    opacity: 1;
+}
+
+.neon:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-neon-primary);
+}
+
+/* Gradient Variant */
+.gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text-primary);
+}
+
+.gradient:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary-dark) 100%);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+}
+
+.gradient .title {
+    color: var(--color-text-primary);
+}
+
+.gradient .description {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Interactive */
@@ -50,29 +114,113 @@
     padding: var(--space-8);
 }
 
-/* Icon header */
+/* Enhanced Icon Wrapper */
 .iconWrapper {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.2) 0%, rgba(var(--color-secondary-rgb), 0.2) 100%);
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.15) 0%, rgba(var(--color-secondary-rgb), 0.1) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-4);
-    color: var(--color-primary-light);
+    color: var(--color-primary);
     font-size: var(--text-2xl);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.iconWrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+.iconWrapper:hover::before {
+    animation: shimmer 0.5s ease-in-out;
+}
+
+.neon .iconWrapper {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.gradient .iconWrapper {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .title {
     font-size: var(--text-xl);
     font-weight: var(--font-semibold);
     color: var(--color-text-primary);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    line-height: var(--leading-tight);
 }
 
 .description {
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+}
+
+/* Neon Border Animation */
+.neonBorder {
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+    z-index: -1;
+    animation: gradient-rotate 3s linear infinite;
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.neon:hover .neonBorder {
+    opacity: 1;
+}
+
+/* Content Effects */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    .gradient {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    }
 }
