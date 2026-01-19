@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
 import styles from './Header.module.css';
@@ -35,7 +35,7 @@ function Header() {
     };
 
     return (
-        <motion.header 
+        <motion.header
             className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -45,7 +45,7 @@ function Header() {
                 <div className={styles.headerInner}>
                     {/* Logo */}
                     <Link to="/" className={styles.logo} aria-label="MuxyGo - Inicio">
-                        <Building2 size={32} className={styles.logoIcon} />
+                        <img src="/logo.png" alt="MuxyGo" className={styles.logoImage} />
                         <span className={styles.logoText}>MuxyGo</span>
                     </Link>
 

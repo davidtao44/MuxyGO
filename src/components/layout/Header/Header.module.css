@@ -31,9 +31,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--color-text-primary);
+    padding: var(--space-2) 0;
     transition: opacity var(--duration-fast);
     text-decoration: none;
 }
@@ -42,12 +40,15 @@
     opacity: 0.8;
 }
 
-.logoIcon {
-    color: var(--color-primary);
-    flex-shrink: 0;
+.logoImage {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 .logoText {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--color-text-primary);
 }
 
