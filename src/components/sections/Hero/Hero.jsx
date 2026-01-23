@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-    ArrowRight, 
-    CheckCircle, 
-    Users, 
-    TrendingUp, 
+import {
+    ArrowRight,
+    CheckCircle,
+    Users,
+    TrendingUp,
     Award,
     BarChart3
 } from 'lucide-react';
@@ -41,7 +41,7 @@ function Hero() {
     ];
 
     return (
-        <motion.section 
+        <motion.section
             className={styles.hero}
             initial="hidden"
             animate="visible"
@@ -51,7 +51,7 @@ function Hero() {
                 <div className={styles.content}>
                     {/* Text Content */}
                     <motion.div className={styles.textContent} variants={containerVariants}>
-                        <motion.div 
+                        <motion.div
                             className={styles.badge}
                             variants={itemVariants}
                         >
@@ -68,8 +68,8 @@ function Hero() {
                         </motion.h1>
 
                         <motion.p className={styles.subtitle} variants={itemVariants}>
-                            Somos tu socio estratégico en la transformación digital. 
-                            Creamos soluciones tecnológicas robustas y escalables que 
+                            Somos tu socio estratégico en la transformación digital.
+                            Creamos soluciones tecnológicas robustas y escalables que
                             impulsan el crecimiento de tu negocio con excelencia profesional.
                         </motion.p>
 
@@ -97,13 +97,13 @@ function Hero() {
                         </motion.div>
 
                         {/* Stats Section */}
-                        <motion.div className={styles.stats} variants={itemVariants}>
+                        {/* <motion.div className={styles.stats} variants={itemVariants}>
                             {statsData.map((stat, index) => (
-                                <motion.div 
-                                    key={index} 
+                                <motion.div
+                                    key={index}
                                     className={styles.stat}
                                     variants={itemVariants}
-                                    whileHover={{ 
+                                    whileHover={{
                                         y: -2,
                                         transition: { duration: 0.2 }
                                     }}
@@ -113,7 +113,7 @@ function Hero() {
                                     <div className={styles.statLabel}>{stat.label}</div>
                                 </motion.div>
                             ))}
-                        </motion.div>
+                        </motion.div> */}
                     </motion.div>
 
                     {/* Visual Side */}
@@ -132,7 +132,7 @@ function Hero() {
                                         <div className={styles.line}></div>
                                         <div className={styles.line}></div>
                                         <div className={styles.line}></div>
-                                         <div className={`${styles.line} ${styles.short}`}></div>
+                                        <div className={`${styles.line} ${styles.short}`}></div>
                                     </div>
                                 </div>
                             </div>

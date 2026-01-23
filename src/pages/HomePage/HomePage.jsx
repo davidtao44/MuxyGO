@@ -5,8 +5,8 @@ function HomePage() {
         <>
             <Hero />
             <Services />
-            <About />
-            <Testimonials />
+            {/* <About />
+            <Testimonials /> */}
             <ContactForm />
         </>
     );

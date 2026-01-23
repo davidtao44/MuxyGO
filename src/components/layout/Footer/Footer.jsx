@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-    Linkedin, 
-    Twitter, 
-    Github, 
-    Mail, 
-    Phone, 
-    MapPin, 
+import {
+    Linkedin,
+    Twitter,
+    Github,
+    Mail,
+    Phone,
+    MapPin,
     Building2
 } from 'lucide-react';
 import Container from '../../ui/Container';
@@ -20,26 +20,25 @@ const QUICK_LINKS = [
 ];
 
 const SERVICES = [
-    { label: 'Desarrollo Web' },
-    { label: 'Apps Móviles' },
-    { label: 'Consultoría IT' },
-    { label: 'Cloud Solutions' },
+    { label: 'Automatización de Procesos' },
+    { label: 'Desarrollo de Software' },
+    { label: 'Automatizacion de WhatsApp' },
 ];
 
 const SOCIAL_LINKS = [
-    { 
-        href: 'https://linkedin.com', 
-        label: 'LinkedIn', 
+    {
+        href: 'https://linkedin.com',
+        label: 'LinkedIn',
         icon: <Linkedin size={20} />,
     },
-    { 
-        href: 'https://twitter.com', 
-        label: 'Twitter', 
+    {
+        href: 'https://twitter.com',
+        label: 'Twitter',
         icon: <Twitter size={20} />,
     },
-    { 
-        href: 'https://github.com', 
-        label: 'GitHub', 
+    {
+        href: 'https://github.com',
+        label: 'GitHub',
         icon: <Github size={20} />,
     },
 ];
@@ -67,7 +66,7 @@ function Footer() {
     };
 
     return (
-        <motion.footer 
+        <motion.footer
             className={styles.footer}
             initial="hidden"
             whileInView="visible"
@@ -82,12 +81,12 @@ function Footer() {
                             <Building2 size={32} className={styles.logoIcon} />
                             <span>MuxyGo</span>
                         </Link>
-                        
+
                         <p className={styles.description}>
                             Transformamos ideas en soluciones tecnológicas robustas.
                             Tu socio estratégico para el crecimiento digital.
                         </p>
-                        
+
                         <div className={styles.socialLinks}>
                             {SOCIAL_LINKS.map((social) => (
                                 <a
@@ -133,17 +132,17 @@ function Footer() {
                         <h3 className={styles.columnTitle}>Contacto</h3>
                         <div className={styles.contactContainer}>
                             {[
-                                { 
-                                    icon: <Mail size={18} />, 
-                                    text: 'hola@muxygo.com'
+                                {
+                                    icon: <Mail size={18} />,
+                                    text: 'gerencia@muxygo.com'
                                 },
-                                { 
-                                    icon: <Phone size={18} />, 
-                                    text: '+1 (555) 123-4567'
+                                {
+                                    icon: <Phone size={18} />,
+                                    text: '+57 314 258 5911'
                                 },
-                                { 
-                                    icon: <MapPin size={18} />, 
-                                    text: 'Innovation Hub, Tech City'
+                                {
+                                    icon: <MapPin size={18} />,
+                                    text: 'Sogamoso, Boyacá, Colombia'
                                 }
                             ].map((item, index) => (
                                 <div key={index} className={styles.contactItem}>

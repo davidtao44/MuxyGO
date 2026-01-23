@@ -1,11 +1,11 @@
 import { useScrollAnimation } from '../../../hooks';
-import { 
-    Code2, 
-    Smartphone, 
-    Cloud, 
-    Shield, 
-    Brain, 
-    BarChart3 
+import {
+    Code2,
+    Smartphone,
+    Cloud,
+    Shield,
+    Brain,
+    BarChart3
 } from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
@@ -14,40 +14,22 @@ import styles from './Services.module.css';
 const SERVICES_DATA = [
     {
         icon: <Code2 size={24} />,
-        title: 'Desarrollo Web',
-        description: 'Creamos aplicaciones web modernas, rápidas y escalables utilizando las últimas tecnologías.',
-        features: ['React & Next.js', 'APIs RESTful', 'Diseño Responsive'],
+        title: 'Automatización de Procesos',
+        description: 'Automatizamos procesos repetitivos y manuales para que puedas enfocarte en lo que realmente importa.',
+        features: ['Automatización de procesos', 'Automatización de software', 'Automatización de procesos con WhatsApp'],
     },
     {
         icon: <Smartphone size={24} />,
-        title: 'Apps Móviles',
-        description: 'Desarrollamos aplicaciones móviles nativas e híbridas para iOS y Android.',
-        features: ['React Native', 'Flutter', 'UX/UI Design'],
+        title: 'Desarrollo de Software',
+        description: 'Desarrollamos software para que puedas enfocarte en lo que realmente importa.',
+        features: ['Desarrollo de software', 'Desarrollo de aplicaciones web', 'React Native', 'FastAPI'],
     },
     {
         icon: <Cloud size={24} />,
-        title: 'Cloud Solutions',
-        description: 'Implementamos soluciones en la nube que optimizan tus operaciones y reducen costos.',
-        features: ['AWS & Azure', 'Kubernetes', 'DevOps'],
-    },
-    {
-        icon: <Shield size={24} />,
-        title: 'Ciberseguridad',
-        description: 'Protegemos tu infraestructura y datos con las mejores prácticas de seguridad.',
-        features: ['Auditorías', 'Pentesting', 'Compliance'],
-    },
-    {
-        icon: <Brain size={24} />,
-        title: 'IA & Machine Learning',
-        description: 'Integramos inteligencia artificial para automatizar procesos y obtener insights.',
-        features: ['ChatBots', 'Análisis Predictivo', 'NLP'],
-    },
-    {
-        icon: <BarChart3 size={24} />,
-        title: 'Business Intelligence',
-        description: 'Transformamos tus datos en información accionable para tomar mejores decisiones.',
-        features: ['Dashboards', 'Data Analytics', 'Reportes'],
-    },
+        title: 'Automatización de WhatsApp',
+        description: 'Automatizamos procesos repetitivos y manuales en whatsapp, para mejorar la comunicación con tus clientes y personal.',
+        features: ['Automatización de WhatsApp', 'Automatización de WhatsApp Business', 'Automatización de WhatsApp con Python'],
+    }
 ];
 
 function ServiceCard({ icon, title, description, features, index }) {

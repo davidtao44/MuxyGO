@@ -1,8 +1,8 @@
 import { useScrollAnimation } from '../../../hooks';
-import { 
-    Target, 
-    Users, 
-    Lightbulb, 
+import {
+    Target,
+    Users,
+    Lightbulb,
     Zap,
     Award,
     TrendingUp
