@@ -33,6 +33,7 @@ const SERVICES_DETAIL = [
             'Offline Support',
         ],
     },
+
     {
         icon: '☁️',
         title: 'Cloud Solutions',
