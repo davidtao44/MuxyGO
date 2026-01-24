@@ -6,10 +6,10 @@ import styles from './ServicesPage.module.css';
 
 const SERVICES_DETAIL = [
     {
-        icon: '💻',
+        icon: '💻', // Puede ser emoji o path de imagen importada
         title: 'Desarrollo Web',
         description: 'Creamos aplicaciones web modernas y escalables utilizando las últimas tecnologías del mercado. Desde landing pages hasta aplicaciones empresariales complejas.',
-        image: '🌐',
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80', // Placeholder
         features: [
             'React & Next.js',
             'APIs RESTful & GraphQL',
@@ -21,8 +21,8 @@ const SERVICES_DETAIL = [
     },
     {
         icon: '📱',
-        title: 'Aplicaciones Móviles',
-        description: 'Desarrollamos aplicaciones móviles nativas e híbridas para iOS y Android que ofrecen experiencias excepcionales a tus usuarios.',
+        title: 'Automatizaciones',
+        description: 'Se implementan servicios de automatización para agilizar procesos y reducir costos.',
         image: '📲',
         features: [
             'React Native',
@@ -113,10 +113,20 @@ function ServicesPage() {
                         {SERVICES_DETAIL.map(({ icon, title, description, image, features }) => (
                             <article key={title} className={styles.serviceDetail}>
                                 <div className={styles.serviceImage}>
-                                    {image}
+                                    {image && image.length > 2 ? (
+                                        <img src={image} alt={title} className={styles.responsiveImage} />
+                                    ) : (
+                                        image
+                                    )}
                                 </div>
                                 <div className={styles.serviceContent}>
-                                    <div className={styles.serviceIcon}>{icon}</div>
+                                    <div className={styles.serviceIcon}>
+                                        {icon && icon.length > 2 ? (
+                                            <img src={icon} alt={title} className={styles.responsiveIcon} />
+                                        ) : (
+                                            icon
+                                        )}
+                                    </div>
                                     <h2 className={styles.serviceTitle}>{title}</h2>
                                     <p className={styles.serviceDescription}>{description}</p>
                                     <ul className={styles.featuresList}>
