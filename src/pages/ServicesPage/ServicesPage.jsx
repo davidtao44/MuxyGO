@@ -6,90 +6,69 @@ import styles from './ServicesPage.module.css';
 
 const SERVICES_DETAIL = [
     {
-        icon: '💻', // Puede ser emoji o path de imagen importada
-        title: 'Desarrollo Web',
-        description: 'Creamos aplicaciones web modernas y escalables utilizando las últimas tecnologías del mercado. Desde landing pages hasta aplicaciones empresariales complejas.',
-        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80', // Placeholder
+        icon: '💬',
+        title: 'Comunicaciones Automatizadas',
+        description: 'Potenciamos tu comunicación con clientes y equipos mediante automatización inteligente de mensajería, notificaciones y respuestas que mejoran experiencia y eficiencia operativa.',
+        image: '📱',
         features: [
-            'React & Next.js',
-            'APIs RESTful & GraphQL',
-            'Diseño Responsive',
-            'SEO Optimizado',
-            'Performance First',
-            'Integración CI/CD',
+            'WhatsApp Business API Integration',
+            'Chatbots IA 24/7',
+            'Automatización de Notificaciones',
+            // 'Comunicación Omnicanal',
+            'Respuestas Automáticas Personalizadas',
+            // 'Segmentación de Audiencias',
+            'Análisis de Interacciones',
+            // 'Integración con CRM y Helpdesk',
         ],
     },
     {
-        icon: '⚡',
-        title: 'Automatización de Procesos',
-        description: 'Optimizamos la eficiencia operativa de tu empresa mediante la automatización inteligente de flujos de trabajo de software, reduciendo errores manuales y acelerando procesos.',
-        image: '⚙️',
+        icon: '🔌',
+        title: 'Integración de APIs y Sistemas',
+        description: 'Conectamos todos tus sistemas y aplicaciones mediante arquitecturas de API robustas que aseguran flujo de datos consistente y automatización entre plataformas.',
+        image: '🔗',
         features: [
-            'Pipelines CI/CD (DevOps)',
-            'Automatización de QA & Testing',
-            'Sincronización de Datos & APIs',
-            'Bots de Automatización (RPA)',
-            'Workflows Multi-plataforma',
-            'Monitoreo & Alertas Proactivas',
+            'RESTful & GraphQL APIs',
+            'Middleware Personalizado',
+            'Sincronización de Datos en Tiempo Real',
+            // 'ETL & Data Transformation',
+            'API Gateway Management',
+            // 'Microservices Architecture',
+            'Webhooks & Event-Driven Integration',
+            // 'Legacy System Modernization',
         ],
     },
-
-    // {
-    //     icon: '☁️',
-    //     title: 'Cloud Solutions',
-    //     description: 'Implementamos y gestionamos infraestructuras en la nube que optimizan tus operaciones, reducen costos y escalan automáticamente.',
-    //     image: '⛅',
-    //     features: [
-    //         'AWS & Azure & GCP',
-    //         'Kubernetes & Docker',
-    //         'Serverless Architecture',
-    //         'Infrastructure as Code',
-    //         'Auto Scaling',
-    //         'Disaster Recovery',
-    //     ],
-    // },
-    // {
-    //     icon: '🔒',
-    //     title: 'Ciberseguridad',
-    //     description: 'Protegemos tu infraestructura digital con las mejores prácticas de seguridad, auditorías regulares y respuesta ante incidentes.',
-    //     image: '🛡️',
-    //     features: [
-    //         'Auditorías de Seguridad',
-    //         'Penetration Testing',
-    //         'SOC 2 Compliance',
-    //         'GDPR Compliance',
-    //         'Security Training',
-    //         'Incident Response',
-    //     ],
-    // },
-    // {
-    //     icon: '🤖',
-    //     title: 'IA & Machine Learning',
-    //     description: 'Integramos inteligencia artificial en tus procesos para automatizar tareas, obtener insights y mejorar la toma de decisiones.',
-    //     image: '🧠',
-    //     features: [
-    //         'ChatBots Inteligentes',
-    //         'Análisis Predictivo',
-    //         'NLP & Procesamiento de Texto',
-    //         'Computer Vision',
-    //         'Recomendaciones ML',
-    //         'Automatización RPA',
-    //     ],
-    // },
-    // {
-    //     icon: '📊',
-    //     title: 'Business Intelligence',
-    //     description: 'Transformamos tus datos en información accionable con dashboards interactivos, reportes automatizados y análisis avanzado.',
-    //     image: '📈',
-    //     features: [
-    //         'Dashboards en Tiempo Real',
-    //         'Data Warehousing',
-    //         'ETL Pipelines',
-    //         'Reportes Automatizados',
-    //         'Data Visualization',
-    //         'Predictive Analytics',
-    //     ],
-    // },
+    {
+        icon: '🔧',
+        title: 'MCPs y Conectores Personalizados',
+        description: 'Implementamos el Model Context Protocol (MCP) para conectar tus modelos de IA con datos y herramientas empresariales de forma segura y estandarizada.',
+        image: '⚡',
+        features: [
+            'Desarrollo de Servidores MCP',
+            'Integración de Fuentes de Datos',
+            'Conectores para Herramientas Internas',
+            // 'Context Awareness para LLMs',
+            'Seguridad y Control de Acceso',
+            'Estandarización de Protocolos',
+            'Interoperabilidad entre Modelos',
+            'Custom Integration Frameworks',
+        ],
+    },
+    {
+        icon: '💻',
+        title: 'Desarrollo de Software a Medida',
+        description: 'Creamos soluciones de software personalizadas que se integran perfectamente con tu ecosistema tecnológico existente, resolviendo problemas específicos de tu negocio.',
+        image: '🚀',
+        features: [
+            'Aplicaciones Web Modernas',
+            'Sistemas Empresariales a Medida',
+            'Desarrollo de APIs Robustas',
+            'Soluciones Cloud-Native',
+            // 'Progressive Web Apps (PWA)',
+            // 'Mobile Applications',
+            // 'Enterprise Software Architecture',
+            // 'DevOps & CI/CD Implementation',
+        ],
+    },
 ];
 
 function ServicesPage() {
@@ -101,7 +80,7 @@ function ServicesPage() {
                     <div className={pageStyles.headerContent}>
                         <h1 className={pageStyles.pageTitle}>Nuestros Servicios</h1>
                         <p className={pageStyles.pageSubtitle}>
-                            Soluciones tecnológicas integrales diseñadas para impulsar tu transformación digital.
+                            Soluciones de automatización e inteligencia artificial para transformar radicalmente tu eficiencia operativa.
                         </p>
                     </div>
                 </Container>
@@ -148,13 +127,13 @@ function ServicesPage() {
             {/* CTA Section */}
             <section className={styles.ctaSection}>
                 <Container>
-                    <h2 className={styles.ctaTitle}>¿Listo para Empezar tu Proyecto?</h2>
+                    <h2 className={styles.ctaTitle}>¿Listo para Automatizar tu Éxito?</h2>
                     <p className={styles.ctaDescription}>
-                        Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos tecnológicos.
+                        Contáctanos hoy y descubre cómo nuestras soluciones pueden transformar completamente tu operación.
                     </p>
                     <Link to="/contacto">
                         <Button variant="primary" size="large">
-                            Solicitar Consulta Gratuita
+                            Iniciar Transformación Digital
                         </Button>
                     </Link>
                 </Container>

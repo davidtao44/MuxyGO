@@ -1,5 +1,6 @@
 import Header from '../Header';
 import Footer from '../Footer';
+import WhatsAppButton from '../../ui/WhatsAppButton/WhatsAppButton';
 import styles from './Layout.module.css';
 
 /**
@@ -13,6 +14,7 @@ function Layout({ children }) {
                 {children}
             </main>
             <Footer />
+            <WhatsAppButton />
         </div>
     );
 }

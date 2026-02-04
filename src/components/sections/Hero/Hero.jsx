@@ -33,13 +33,6 @@ function Hero() {
         }
     };
 
-    const statsData = [
-        { value: "500+", label: "Proyectos Completados", icon: <CheckCircle size={20} /> },
-        { value: "200+", label: "Clientes Satisfechos", icon: <Users size={20} /> },
-        { value: "15+", label: "Años de Experiencia", icon: <Award size={20} /> },
-        { value: "98%", label: "Tasa de Satisfacción", icon: <TrendingUp size={20} /> }
-    ];
-
     return (
         <motion.section
             className={styles.hero}
@@ -95,49 +88,6 @@ function Hero() {
                                 </Link>
                             </motion.div>
                         </motion.div>
-
-                        {/* Stats Section */}
-                        {/* <motion.div className={styles.stats} variants={itemVariants}>
-                            {statsData.map((stat, index) => (
-                                <motion.div
-                                    key={index}
-                                    className={styles.stat}
-                                    variants={itemVariants}
-                                    whileHover={{
-                                        y: -2,
-                                        transition: { duration: 0.2 }
-                                    }}
-                                >
-                                    <div className={styles.statIcon}>{stat.icon}</div>
-                                    <div className={styles.statValue}>{stat.value}</div>
-                                    <div className={styles.statLabel}>{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </motion.div> */}
-                    </motion.div>
-
-                    {/* Visual Side */}
-                    <motion.div className={styles.visual} variants={itemVariants}>
-                        <div className={styles.visualContent}>
-                            <div className={styles.visualCard}>
-                                <div className={styles.visualCardHeader}>
-                                    <div className={styles.visualDots}>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div className={styles.visualCardBody}>
-                                    <div className={styles.visualLines}>
-                                        <div className={styles.line}></div>
-                                        <div className={styles.line}></div>
-                                        <div className={styles.line}></div>
-                                        <div className={`${styles.line} ${styles.short}`}></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <BarChart3 className={styles.chartIcon} size={120} />
-                        </div>
                     </motion.div>
                 </div>
             </Container>
