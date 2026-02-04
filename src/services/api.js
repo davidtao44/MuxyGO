@@ -3,7 +3,14 @@
  * Prepared for future integrations with backend services
  */
 
+import emailjs from '@emailjs/browser';
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 /**
  * Generic fetch wrapper with error handling
@@ -27,17 +34,45 @@ async function fetchApi(endpoint, options = {}) {
 }
 
 /**
- * Contact form submission
- * Currently logs to console - ready for API integration
+ * Contact form submission via EmailJS
  */
 export async function submitContactForm(formData) {
-    // TODO: Replace with actual API endpoint when backend is ready
-    console.log('Contact form submitted:', formData);
+    // Validate configuration
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        console.warn('EmailJS not configured. Using fallback simulation.');
+        console.log('Form Data:', formData);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return { success: true, message: 'Mensaje enviado (Simulación - Configurar EmailJS)' };
+    }
 
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+        const templateParams = {
+            to_name: 'MuxyGo Team',
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone || 'No especificado',
+            company: formData.company || 'No especificada',
+            service: formData.service || 'General',
+            message: formData.message,
+            reply_to: formData.email
+        };
 
-    return { success: true, message: 'Mensaje enviado correctamente' };
+        const response = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams,
+            EMAILJS_PUBLIC_KEY
+        );
+
+        if (response.status === 200) {
+            return { success: true, message: 'Mensaje enviado correctamente' };
+        } else {
+            throw new Error('Error al enviar el email');
+        }
+    } catch (error) {
+        console.error('EmailJS Error:', error);
+        throw new Error('No se pudo enviar el mensaje. Por favor intenta nuevamente.');
+    }
 }
 
 /**

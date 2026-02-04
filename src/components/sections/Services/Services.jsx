@@ -1,11 +1,14 @@
 import { useScrollAnimation } from '../../../hooks';
 import {
+    MessageSquare,
+    Database,
+    Puzzle,
+    Server,
+    Globe,
     Code2,
-    Smartphone,
-    Cloud,
-    Shield,
-    Brain,
-    BarChart3
+    Settings,
+    Link,
+    Zap
 } from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
@@ -13,22 +16,28 @@ import styles from './Services.module.css';
 
 const SERVICES_DATA = [
     {
+        icon: <MessageSquare size={24} />,
+        title: 'Comunicaciones Automatizadas',
+        description: 'Potenciamos tu comunicación con clientes y equipos mediante automatización de mensajería y notificaciones.',
+        features: ['WhatsApp Business API', 'Notificaciones Automáticas', 'Sistemas de Mensajería', 'Comunicación Omnicanal'],
+    },
+    {
+        icon: <Link size={24} />,
+        title: 'Integración de APIs y Sistemas',
+        description: 'Conectamos todos tus sistemas y aplicaciones mediante API robustas y sincronización de datos.',
+        features: ['RESTful & GraphQL APIs', 'Middleware Personalizado', 'Sincronización de Datos', 'Transformación de Datos'],
+    },
+    {
+        icon: <Globe size={24} />,
+        title: 'MCPs y Conectores Personalizados',
+        description: 'Implementamos el Model Context Protocol (MCP) para conectar tus modelos de IA con datos y herramientas empresariales.',
+        features: ['Servidores MCP', 'Conectores para Herramientas', 'Context Awareness', 'Interoperabilidad IA'],
+    },
+    {
         icon: <Code2 size={24} />,
-        title: 'Automatización de Procesos',
-        description: 'Automatizamos procesos repetitivos y manuales para que puedas enfocarte en lo que realmente importa.',
-        features: ['Automatización de procesos', 'Automatización de software', 'Automatización de procesos con WhatsApp'],
-    },
-    {
-        icon: <Smartphone size={24} />,
-        title: 'Desarrollo de Software',
-        description: 'Desarrollamos software para que puedas enfocarte en lo que realmente importa.',
-        features: ['Desarrollo de software', 'Desarrollo de aplicaciones web', 'React Native', 'FastAPI'],
-    },
-    {
-        icon: <Cloud size={24} />,
-        title: 'Automatización de WhatsApp',
-        description: 'Automatizamos procesos repetitivos y manuales en whatsapp, para mejorar la comunicación con tus clientes y personal.',
-        features: ['Automatización de WhatsApp', 'Automatización de WhatsApp Business', 'Automatización de WhatsApp con Python'],
+        title: 'Desarrollo de Software a Medida',
+        description: 'Creamos soluciones de software personalizadas que se integran con tu ecosistema tecnológico.',
+        features: ['Aplicaciones Web', 'Sistemas Empresariales', 'Desarrollo de APIs', 'Soluciones Cloud-Native'],
     }
 ];
 
@@ -42,7 +51,6 @@ function ServiceCard({ icon, title, description, features, index }) {
             style={{ transitionDelay: `${index * 100}ms` }}
         >
             <div className={styles.cardHeader}>
-                <div className={styles.iconWrapper}>{icon}</div>
                 <h3 className={styles.serviceTitle}>{title}</h3>
             </div>
             <p className={styles.serviceDescription}>{description}</p>
@@ -64,8 +72,8 @@ function Services() {
                 <header className={styles.header}>
                     <h2 className={styles.title}>Nuestros Servicios</h2>
                     <p className={styles.description}>
-                        Ofrecemos un portafolio completo de servicios diseñados para impulsar
-                        la transformación digital de tu empresa con excelencia profesional.
+                        Soluciones integrales de automatización e inteligencia artificial para transformar 
+                        tus procesos empresariales y acelerar tu crecimiento digital con máxima eficiencia.
                     </p>
                 </header>
 
@@ -77,13 +85,13 @@ function Services() {
 
                 <div className={styles.cta}>
                     <h3 className={styles.ctaTitle}>
-                        ¿Listo para transformar tu negocio?
+                        ¿Listo para automatizar tu crecimiento?
                     </h3>
                     <p className={styles.ctaDescription}>
-                        Hablemos de cómo podemos ayudarte a alcanzar tus objetivos digitales.
+                        Descubre cómo nuestras soluciones de automatización e IA pueden revolucionar tu operación.
                     </p>
                     <Button variant="primary" size="large">
-                        Consultar Servicio
+                        Consultar Solución
                     </Button>
                 </div>
             </Container>

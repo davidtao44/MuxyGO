@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { submitContactForm } from '../../services/api';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import pageStyles from '../Page.module.css';
@@ -7,25 +8,25 @@ import styles from './ContactPage.module.css';
 
 const CONTACT_INFO = [
     {
-        icon: '📧',
+        icon: <Mail size={24} />,
         title: 'Email',
         content: 'gerencia@muxygo.com',
         link: 'mailto:gerencia@muxygo.com',
     },
     {
-        icon: '📱',
+        icon: <Phone size={24} />,
         title: 'Teléfono',
         content: '+57 314 258 5911',
         link: 'tel:+573142585911',
     },
     {
-        icon: '📍',
+        icon: <MapPin size={24} />,
         title: 'Dirección',
         content: 'Sogamoso, Boyacá, Colombia',
         link: null,
     },
     {
-        icon: '🕐',
+        icon: <Clock size={24} />,
         title: 'Horario',
         content: 'Lunes a Viernes: 9:00 - 18:00',
         link: null,

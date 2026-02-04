@@ -20,9 +20,10 @@ const QUICK_LINKS = [
 ];
 
 const SERVICES = [
-    { label: 'Automatización de Procesos' },
-    { label: 'Desarrollo de Software' },
-    { label: 'Automatizacion de WhatsApp' },
+    { label: 'Comunicaciones Automatizadas' },
+    { label: 'Integración de APIs y Sistemas' },
+    { label: 'MCPs y Conectores Personalizados' },
+    { label: 'Desarrollo de Software a Medida' },
 ];
 
 const SOCIAL_LINKS = [
