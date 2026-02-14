@@ -25,7 +25,7 @@ const SERVICES_DETAIL = [
         icon: '🔌',
         title: 'Integración de APIs y Sistemas',
         description: 'Conectamos todos tus sistemas y aplicaciones mediante arquitecturas de API robustas que aseguran flujo de datos consistente y automatización entre plataformas.',
-        image: '🔗',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
         features: [
             'RESTful & GraphQL APIs',
             'Middleware Personalizado',
