@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { useScrollAnimation } from '../../../hooks';
-import { submitContactForm } from '../../../services/api';
 import { 
     Mail, 
     User, 
@@ -29,34 +29,29 @@ const SERVICES = [
 ];
 
 function ContactForm() {
+    // Usar variable de entorno o un string temporal que el usuario debe reemplazar
+    const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_FORM_ID || "xeelpogw");
     const [formData, setFormData] = useState(INITIAL_FORM_STATE);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
     const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 });
+
+    // Efecto para manejar el éxito del envío y limpiar el formulario
+    useEffect(() => {
+        if (state.succeeded) {
+            setFormData(INITIAL_FORM_STATE);
+        }
+    }, [state.succeeded]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            await submitContactForm(formData);
-            setIsSuccess(true);
-            setFormData(INITIAL_FORM_STATE);
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
     const resetForm = () => {
-        setIsSuccess(false);
-        setFormData(INITIAL_FORM_STATE);
+        // Formspree no tiene un método directo de reset en useForm para volver a 'submitting: false',
+        // pero podemos simplemente recargar la página o manejar un estado local de UI si quisiéramos ocultar el mensaje de éxito.
+        // Dado que useForm mantiene el estado 'succeeded', la forma más limpia en SPA es desmontar/montar o recargar,
+        // pero para UX simple, permitiremos ver el mensaje de éxito.
+        window.location.reload(); 
     };
 
     return (
@@ -73,7 +68,7 @@ function ContactForm() {
                     ref={ref}
                     className={`${styles.formWrapper} ${isVisible ? styles.visible : ''}`}
                 >
-                    {isSuccess ? (
+                    {state.succeeded ? (
                         <div className={styles.successMessage}>
                             <CheckCircle size={48} className={styles.successIcon} />
                             <h3 className={styles.successTitle}>¡Mensaje Enviado con Éxito!</h3>
@@ -102,6 +97,12 @@ function ContactForm() {
                                         placeholder="Juan Pérez"
                                         required
                                     />
+                                    <ValidationError 
+                                        prefix="Nombre" 
+                                        field="name"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
@@ -118,6 +119,12 @@ function ContactForm() {
                                         className={styles.input}
                                         placeholder="juan@empresa.com"
                                         required
+                                    />
+                                    <ValidationError 
+                                        prefix="Email" 
+                                        field="email"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
                                     />
                                 </div>
                             </div>
@@ -136,6 +143,12 @@ function ContactForm() {
                                         onChange={handleChange}
                                         className={styles.input}
                                         placeholder="Mi Empresa S.A."
+                                    />
+                                    <ValidationError 
+                                        prefix="Empresa" 
+                                        field="company"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
                                     />
                                 </div>
 
@@ -158,6 +171,12 @@ function ContactForm() {
                                             </option>
                                         ))}
                                     </select>
+                                    <ValidationError 
+                                        prefix="Servicio" 
+                                        field="service"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
+                                    />
                                 </div>
                             </div>
 
@@ -176,6 +195,12 @@ function ContactForm() {
                                     rows={6}
                                     required
                                 ></textarea>
+                                <ValidationError 
+                                    prefix="Mensaje" 
+                                    field="message"
+                                    errors={state.errors}
+                                    className={styles.fieldError}
+                                />
                             </div>
 
                             <Button
@@ -183,10 +208,10 @@ function ContactForm() {
                                 variant="primary"
                                 size="large"
                                 fullWidth
-                                disabled={isSubmitting}
+                                disabled={state.submitting}
                                 className={styles.submitButton}
                             >
-                                {isSubmitting ? 'Enviando Mensaje...' : 'Enviar Mensaje'}
+                                {state.submitting ? 'Enviando Mensaje...' : 'Enviar Mensaje'}
                             </Button>
                         </form>
                     )}

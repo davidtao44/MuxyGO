@@ -20,10 +20,12 @@ const QUICK_LINKS = [
 ];
 
 const SERVICES = [
+    { label: 'Automatización Inteligente' },
     { label: 'Comunicaciones Automatizadas' },
-    { label: 'Integración de APIs y Sistemas' },
-    { label: 'MCPs y Conectores Personalizados' },
-    { label: 'Desarrollo de Software a Medida' },
+    { label: 'Integración con IA' },
+    { label: 'RAG y Gestión del Conocimiento' },
+    { label: 'Integración de APIs' },
+    { label: 'Sistemas Internos' },
 ];
 
 const SOCIAL_LINKS = [

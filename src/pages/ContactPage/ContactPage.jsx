@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { submitContactForm } from '../../services/api';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import pageStyles from '../Page.module.css';
@@ -43,28 +43,20 @@ const INITIAL_FORM_STATE = {
 };
 
 function ContactPage() {
+    // Usar variable de entorno o un string temporal que el usuario debe reemplazar
+    const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_FORM_ID || "xeelpogw");
     const [formData, setFormData] = useState(INITIAL_FORM_STATE);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+
+    // Efecto para manejar el éxito del envío y limpiar el formulario
+    useEffect(() => {
+        if (state.succeeded) {
+            setFormData(INITIAL_FORM_STATE);
+        }
+    }, [state.succeeded]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            await submitContactForm(formData);
-            setIsSuccess(true);
-            setFormData(INITIAL_FORM_STATE);
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
     };
 
     return (
@@ -132,12 +124,12 @@ function ContactPage() {
                             Completa el formulario y nos pondremos en contacto contigo pronto.
                         </p>
 
-                        {isSuccess ? (
+                        {state.succeeded ? (
                             <div className={styles.successMessage}>
-                                <div className={styles.successIcon}>✅</div>
+                                <CheckCircle size={64} className={styles.successIcon} color="#22c55e" />
                                 <h3 className={styles.successTitle}>¡Mensaje Enviado!</h3>
                                 <p className={styles.successText}>
-                                    Gracias por contactarnos. Te responderemos en menos de 24 horas.
+                                    Gracias por contactarnos. Te responderemos lo más pronto posible.
                                 </p>
                             </div>
                         ) : (
@@ -157,6 +149,12 @@ function ContactPage() {
                                             placeholder="Tu nombre"
                                             required
                                         />
+                                        <ValidationError 
+                                            prefix="Nombre" 
+                                            field="name"
+                                            errors={state.errors}
+                                            className={styles.fieldError}
+                                        />
                                     </div>
 
                                     <div className={styles.formGroup}>
@@ -172,6 +170,12 @@ function ContactPage() {
                                             className={styles.input}
                                             placeholder="tu@email.com"
                                             required
+                                        />
+                                        <ValidationError 
+                                            prefix="Email" 
+                                            field="email"
+                                            errors={state.errors}
+                                            className={styles.fieldError}
                                         />
                                     </div>
                                 </div>
@@ -190,6 +194,12 @@ function ContactPage() {
                                             className={styles.input}
                                             placeholder="+1 (555) 000-0000"
                                         />
+                                        <ValidationError 
+                                            prefix="Teléfono" 
+                                            field="phone"
+                                            errors={state.errors}
+                                            className={styles.fieldError}
+                                        />
                                     </div>
 
                                     <div className={styles.formGroup}>
@@ -204,6 +214,12 @@ function ContactPage() {
                                             onChange={handleChange}
                                             className={styles.input}
                                             placeholder="Tu empresa"
+                                        />
+                                        <ValidationError 
+                                            prefix="Empresa" 
+                                            field="company"
+                                            errors={state.errors}
+                                            className={styles.fieldError}
                                         />
                                     </div>
                                 </div>
@@ -225,6 +241,12 @@ function ContactPage() {
                                         <option value="mcp">MCPs y Conectores Personalizados</option>
                                         <option value="software">Desarrollo de Software a Medida</option>
                                     </select>
+                                    <ValidationError 
+                                        prefix="Servicio" 
+                                        field="service"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
@@ -240,6 +262,12 @@ function ContactPage() {
                                         placeholder="Cuéntanos sobre tu proyecto, necesidades o cualquier consulta..."
                                         required
                                     ></textarea>
+                                    <ValidationError 
+                                        prefix="Mensaje" 
+                                        field="message"
+                                        errors={state.errors}
+                                        className={styles.fieldError}
+                                    />
                                 </div>
 
                                 <Button
@@ -247,9 +275,9 @@ function ContactPage() {
                                     variant="primary"
                                     size="large"
                                     fullWidth
-                                    disabled={isSubmitting}
+                                    disabled={state.submitting}
                                 >
-                                    {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                                    {state.submitting ? 'Enviando...' : 'Enviar Mensaje'}
                                 </Button>
                             </form>
                         )}
