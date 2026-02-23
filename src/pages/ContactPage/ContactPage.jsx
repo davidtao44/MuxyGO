@@ -220,13 +220,10 @@ function ContactPage() {
                                         className={styles.select}
                                     >
                                         <option value="">Selecciona un servicio</option>
-                                        <option value="web">Desarrollo Web</option>
-                                        <option value="mobile">Apps Móviles</option>
-                                        <option value="cloud">Cloud Solutions</option>
-                                        <option value="security">Ciberseguridad</option>
-                                        <option value="ai">IA & Machine Learning</option>
-                                        <option value="bi">Business Intelligence</option>
-                                        <option value="other">Otro</option>
+                                        <option value="comunicaciones">Comunicaciones Automatizadas</option>
+                                        <option value="integracion">Integración de APIs y Sistemas</option>
+                                        <option value="mcp">MCPs y Conectores Personalizados</option>
+                                        <option value="software">Desarrollo de Software a Medida</option>
                                     </select>
                                 </div>
 

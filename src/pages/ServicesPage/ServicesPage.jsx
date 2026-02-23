@@ -9,10 +9,10 @@ const SERVICES_DETAIL = [
         icon: '💬',
         title: 'Comunicaciones Automatizadas',
         description: 'Potenciamos tu comunicación con clientes y equipos mediante automatización inteligente de mensajería, notificaciones y respuestas que mejoran experiencia y eficiencia operativa.',
-        image: '📱',
+        image: '/ComunicacionesAutomatizadas.png',
         features: [
             'WhatsApp Business API Integration',
-            'Chatbots IA 24/7',
+            'Agentes IA 24/7',
             'Automatización de Notificaciones',
             // 'Comunicación Omnicanal',
             'Respuestas Automáticas Personalizadas',
@@ -25,7 +25,7 @@ const SERVICES_DETAIL = [
         icon: '🔌',
         title: 'Integración de APIs y Sistemas',
         description: 'Conectamos todos tus sistemas y aplicaciones mediante arquitecturas de API robustas que aseguran flujo de datos consistente y automatización entre plataformas.',
-        image: '🔗',
+        image: '/APIs.png',
         features: [
             'RESTful & GraphQL APIs',
             'Middleware Personalizado',
@@ -41,7 +41,7 @@ const SERVICES_DETAIL = [
         icon: '🔧',
         title: 'MCPs y Conectores Personalizados',
         description: 'Implementamos el Model Context Protocol (MCP) para conectar tus modelos de IA con datos y herramientas empresariales de forma segura y estandarizada.',
-        image: '⚡',
+        image: '/MCP.png',
         features: [
             'Desarrollo de Servidores MCP',
             'Integración de Fuentes de Datos',
@@ -57,7 +57,7 @@ const SERVICES_DETAIL = [
         icon: '💻',
         title: 'Desarrollo de Software a Medida',
         description: 'Creamos soluciones de software personalizadas que se integran perfectamente con tu ecosistema tecnológico existente, resolviendo problemas específicos de tu negocio.',
-        image: '🚀',
+        image: '/Desarrolloweb.png',
         features: [
             'Aplicaciones Web Modernas',
             'Sistemas Empresariales a Medida',

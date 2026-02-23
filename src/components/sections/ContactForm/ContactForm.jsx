@@ -22,12 +22,10 @@ const INITIAL_FORM_STATE = {
 };
 
 const SERVICES = [
-    { value: 'web', label: 'Desarrollo Web' },
-    { value: 'mobile', label: 'Apps Móviles' },
-    { value: 'cloud', label: 'Cloud Solutions' },
-    { value: 'security', label: 'Ciberseguridad' },
-    { value: 'ai', label: 'IA & Machine Learning' },
-    { value: 'bi', label: 'Business Intelligence' },
+    { value: 'comunicaciones', label: 'Comunicaciones Automatizadas' },
+    { value: 'integracion', label: 'Integración de APIs y Sistemas' },
+    { value: 'mcp', label: 'MCPs y Conectores Personalizados' },
+    { value: 'software', label: 'Desarrollo de Software a Medida' },
 ];
 
 function ContactForm() {
