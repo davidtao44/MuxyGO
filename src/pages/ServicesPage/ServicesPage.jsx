@@ -90,7 +90,7 @@ function ServicesPage() {
             <section className={styles.servicesSection}>
                 <Container>
                     <div className={styles.servicesGrid}>
-                        {SERVICES_DETAIL.map(({ icon, title, description, image, features }) => (
+                        {SERVICES_DETAIL.map(({ title, description, image, features }) => (
                             <article key={title} className={styles.serviceDetail}>
                                 <div className={styles.serviceImage}>
                                     {image && image.length > 2 ? (
@@ -100,13 +100,6 @@ function ServicesPage() {
                                     )}
                                 </div>
                                 <div className={styles.serviceContent}>
-                                    <div className={styles.serviceIcon}>
-                                        {icon && icon.length > 2 ? (
-                                            <img src={icon} alt={title} className={styles.responsiveIcon} />
-                                        ) : (
-                                            icon
-                                        )}
-                                    </div>
                                     <h2 className={styles.serviceTitle}>{title}</h2>
                                     <p className={styles.serviceDescription}>{description}</p>
                                     <ul className={styles.featuresList}>
