@@ -25,7 +25,7 @@ const SERVICES_DATA = [
         icon: <Link size={24} />,
         title: 'Integración de APIs y Sistemas',
         description: 'Conectamos todos tus sistemas y aplicaciones mediante API robustas y sincronización de datos.',
-        features: ['RESTful & GraphQL APIs', 'Middleware Personalizado', 'Sincronización de Datos', 'Transformación de Datos'],
+        features: ['RESTful APIs', 'Middleware Personalizado', 'Sincronización de Datos', 'Transformación de Datos'],
     },
     {
         icon: <Globe size={24} />,

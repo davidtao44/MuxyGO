@@ -1,0 +1,102 @@
+.animationContainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.circleBackground {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.15) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+    z-index: 0;
+}
+
+.logoWrapper {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-surface-border);
+    border-radius: 50%;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    transition: box-shadow 0.3s ease;
+}
+
+.logoWrapper:hover {
+    box-shadow: var(--shadow-strong);
+    border-color: var(--color-primary);
+    z-index: 2;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Pentagon-like positioning */
+/* 1. Top Center */
+.logo1 { 
+    top: 15%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+/* 2. Middle Right */
+.logo2 { 
+    top: 35%; 
+    right: 15%; 
+}
+
+/* 3. Bottom Right */
+.logo3 { 
+    bottom: 20%; 
+    right: 25%; 
+}
+
+/* 4. Bottom Left */
+.logo4 { 
+    bottom: 20%; 
+    left: 25%; 
+}
+
+/* 5. Middle Left */
+.logo5 { 
+    top: 35%; 
+    left: 15%; 
+}
+
+@media (min-width: 1024px) {
+    .animationContainer {
+        height: 500px;
+    }
+    
+    .circleBackground {
+        width: 400px;
+        height: 400px;
+    }
+
+    .logoWrapper {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Adjust positions for larger screens */
+    .logo1 { top: 10%; }
+    .logo2 { top: 30%; right: 10%; }
+    .logo3 { bottom: 15%; right: 20%; }
+    .logo4 { bottom: 15%; left: 20%; }
+    .logo5 { top: 30%; left: 10%; }
+}

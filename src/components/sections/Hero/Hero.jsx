@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import Container from '../../ui/Container';
 import Button from '../../ui/Button';
+import HeroAnimation from './HeroAnimation';
 import styles from './Hero.module.css';
 
 function Hero() {
@@ -89,6 +90,11 @@ function Hero() {
                             </motion.div>
                         </motion.div>
                     </motion.div>
+                    
+                    {/* Animation Content */}
+                    <div className={styles.animationWrapper}>
+                        <HeroAnimation />
+                    </div>
                 </div>
             </Container>
         </motion.section>

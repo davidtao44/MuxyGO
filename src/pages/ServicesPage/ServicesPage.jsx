@@ -27,7 +27,7 @@ const SERVICES_DETAIL = [
         description: 'Conectamos todos tus sistemas y aplicaciones mediante arquitecturas de API robustas que aseguran flujo de datos consistente y automatización entre plataformas.',
         image: '/APIs.png',
         features: [
-            'RESTful & GraphQL APIs',
+            'RESTful APIs',
             'Middleware Personalizado',
             'Sincronización de Datos en Tiempo Real',
             // 'ETL & Data Transformation',
